@@ -1,0 +1,63 @@
+.statistic-card-area {
+    display: flex;
+    justify-content: center;
+}
+
+.statistic-card-area .statistic-card {
+    text-align: center;
+    margin-right: 30px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.statistic-card-area .statistic-card .fa {
+    font-size: 48px;
+    color: white;
+    transition: transform 0.5s;
+}
+
+.statistic-card-area .statistic-card.address-book {
+    background-color: #5bc0de;
+}
+
+.statistic-card-area .statistic-card.user-circle {
+    background-color: #d6de5b;
+}
+
+.statistic-card-area .statistic-card.wpexplorer {
+    background-color: #8dde5b;
+}
+
+.statistic-card-area .statistic-card.car {
+    background-color: #debc5b;
+}
+
+.statistic-card-area .statistic-card.bug {
+    background-color: #5d5bde;
+}
+
+.statistic-card-area .statistic-card .statistic-amount {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: white;
+    font-size: 18px;
+}
+
+.statistic-card:hover .fa {
+    transform: scale(1.5);
+}
+
+@media (max-width: 767px) {
+    .statistic-card-area {
+        display: block;
+    }
+
+    .statistic-card-area .statistic-card {
+        margin-bottom: 3px;
+    }
+}

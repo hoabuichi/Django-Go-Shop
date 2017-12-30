@@ -1,0 +1,33 @@
+{% extends "base.tpl.html" %}
+{% load static %}
+{% block style_block %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}?{% now "U" %}">
+{% endblock %}
+{% block main_content %}
+    <div class="page-title">Dashboard</div>
+    <br/><br/>
+    <div class="statistic-card-area row">
+        <div class="statistic-card col-md-2 address-book col-sm-12">
+            <div class="statistic-amount">200</div>
+            <i class="fa fa-address-book" aria-hidden="true"></i>
+        </div>
+        <div class="statistic-card col-md-2 user-circle col-sm-12">
+            <div class="statistic-amount">150</div>
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+        </div>
+        <div class="statistic-card col-md-2 wpexplorer col-sm-12">
+            <div class="statistic-amount">180</div>
+            <i class="fa fa-wpexplorer" aria-hidden="true"></i>
+        </div>
+        <div class="statistic-card col-md-2 car col-sm-12">
+            <div class="statistic-amount">220</div>
+            <i class="fa fa-car" aria-hidden="true"></i>
+        </div>
+        <div class="statistic-card col-md-2 bug col-sm-12">
+            <div class="statistic-amount">120</div>
+            <i class="fa fa-bug" aria-hidden="true"></i>
+        </div>
+    </div>
+{% endblock %}
+
