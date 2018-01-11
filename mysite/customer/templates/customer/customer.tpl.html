@@ -1,4 +1,47 @@
 {% extends 'base.tpl.html' %}
+{% load static %}
+{% block style_block %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'customer/customer.css' %}?{% now "U" %}">
+{% endblock %}
 {% block main_content %}
     <div class="page-title">Customer</div>
+    <br><br>
+    <div class="add-customer-btn">
+        <a href="{% url 'customer:add_customer' %}">
+            <input type="button" class="btn btn-primary" value="Add"  />
+        </a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Image Url</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customer_list %}
+            <tr>
+                <td>{{ customer.first_name|default_if_none:'' }}</td>
+                <td>{{ customer.last_name|default_if_none:'' }}</td>
+                <td>{{ customer.image_url|default_if_none:'' }}</td>
+                <td>{{ customer.age|default_if_none:'' }}</td>
+                <td>
+                    <a href="{% url 'customer:update_customer' customer.id %}">
+                        <button class="btn btn-default btn-outline-green">Edit</button>
+                    </a>
+                    <a href="{% url 'customer:delete_customer' customer.id %}">
+                        <button class="btn btn-default btn-outline-red">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block js_block %}
+    {{ block.super }}
 {% endblock %}

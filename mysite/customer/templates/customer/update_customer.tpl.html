@@ -1,0 +1,61 @@
+{% extends 'base.tpl.html' %}
+{% load static %}
+{% block style_block %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'customer/customer.css' %}?{% now "U" %}">
+{% endblock %}
+{% block main_content %}
+    <div class="page-title">Edit Customer</div>
+    <br><br>
+    <form method="POST" action="{% url 'customer:update_customer' customer.id %}"  onsubmit="return submitFuc()">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="row required">
+                <label class="col-md-2" for="firstname">First Name:</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" value="{{ customer.first_name|default_if_none:'' }}" id="firstname" name="first_name" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <div class="row">
+                <label class="col-md-2" for="lastname">Last Name:</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" value="{{ customer.last_name|default_if_none:'' }}" id="lastname" name="last_name" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <div class="row">
+                <label class="col-md-2" for="customer_image">Image:</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" value="{{ customer.image_url|default_if_none:'' }}" id="customer_image" name="image_url" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <div class="row">
+                <label class="col-md-2" for="age">Age:</label>
+                <div class="col-md-3">
+                    <input type="number" min="0" class="form-control" value="{{ customer.age|default_if_none:'' }}" id="age" name="age" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="submit" class="btn btn-primary add-customer-submit-btn" value="Submit"/>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+{% block js_block %}
+    {{ block.super }}
+    <script>
+        var submitFuc = function() {
+            console.log(123);
+            //return false; to cancel submit action
+        };
+    </script>
+{% endblock %}
