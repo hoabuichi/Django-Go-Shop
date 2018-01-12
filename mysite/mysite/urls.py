@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'^contact/', include('contact.urls')),
     url(r'^customer/', include('customer.urls')),
+    url(r'^moto/', include('moto.urls')),
 ]

@@ -7,7 +7,7 @@
 {% block main_content %}
     <div class="page-title">Add Customer</div>
     <br><br>
-    <form method="POST" action="{% url 'customer:add_customer' %}"  onsubmit="return submitFuc()">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'customer:add_customer' %}"  onsubmit="return submitFuc()">
         {% csrf_token %}
         <div class="form-group">
             <div class="row required">
@@ -29,7 +29,7 @@
             <div class="row">
                 <label class="col-md-2" for="customer_image">Image:</label>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" id="customer_image" name="image_url" required>
+                    <input type="file" name="customer_image" required>
                 </div>
             </div>
         </div>

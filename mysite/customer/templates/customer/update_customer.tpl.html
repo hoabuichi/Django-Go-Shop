@@ -7,44 +7,55 @@
 {% block main_content %}
     <div class="page-title">Edit Customer</div>
     <br><br>
-    <form method="POST" action="{% url 'customer:update_customer' customer.id %}"  onsubmit="return submitFuc()">
+    <form method="POST" action="{% url 'customer:update_customer' customer.id %}" onsubmit="return submitFuc()">
         {% csrf_token %}
-        <div class="form-group">
-            <div class="row required">
-                <label class="col-md-2" for="firstname">First Name:</label>
-                <div class="col-md-3">
-                    <input type="text" class="form-control" value="{{ customer.first_name|default_if_none:'' }}" id="firstname" name="first_name" required>
-                </div>
+        <div class="row">
+            <div class="col-md-2">
+                <img width="170" height="170" src="{{ customer.image_url|default_if_none:'' }}"/>
             </div>
-        </div>
-        <div class="form-group required">
-            <div class="row">
-                <label class="col-md-2" for="lastname">Last Name:</label>
-                <div class="col-md-3">
-                    <input type="text" class="form-control" value="{{ customer.last_name|default_if_none:'' }}" id="lastname" name="last_name" required>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <div class="row required">
+                        <label class="col-md-2" for="firstname">First Name:</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" value="{{ customer.first_name|default_if_none:'' }}"
+                                   id="firstname" name="first_name" required>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group required">
-            <div class="row">
-                <label class="col-md-2" for="customer_image">Image:</label>
-                <div class="col-md-3">
-                    <input type="text" class="form-control" value="{{ customer.image_url|default_if_none:'' }}" id="customer_image" name="image_url" required>
+                <div class="form-group required">
+                    <div class="row">
+                        <label class="col-md-2" for="lastname">Last Name:</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" value="{{ customer.last_name|default_if_none:'' }}"
+                                   id="lastname" name="last_name" required>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group required">
-            <div class="row">
-                <label class="col-md-2" for="age">Age:</label>
-                <div class="col-md-3">
-                    <input type="number" min="0" class="form-control" value="{{ customer.age|default_if_none:'' }}" id="age" name="age" required>
+                <div class="form-group required" hidden>
+                    <div class="row">
+                        <label class="col-md-2" for="customer_image">Image:</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" value="{{ customer.image_url|default_if_none:'' }}"
+                                   id="customer_image" name="image_url" required>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-5">
-                    <input type="submit" class="btn btn-primary add-customer-submit-btn" value="Submit"/>
+                <div class="form-group required">
+                    <div class="row">
+                        <label class="col-md-2" for="age">Age:</label>
+                        <div class="col-md-3">
+                            <input type="number" min="0" class="form-control"
+                                   value="{{ customer.age|default_if_none:'' }}" id="age" name="age" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="submit" class="btn btn-primary add-customer-submit-btn" value="Submit"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +64,7 @@
 {% block js_block %}
     {{ block.super }}
     <script>
-        var submitFuc = function() {
+        var submitFuc = function () {
             console.log(123);
             //return false; to cancel submit action
         };

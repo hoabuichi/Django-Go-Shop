@@ -33,6 +33,9 @@
                     <a href="{% url 'customer:update_customer' customer.id %}">
                         <button class="btn btn-default btn-outline-green">Edit</button>
                     </a>
+                    <a href="{% url 'customer:upload_profile_customer' customer.id %}">
+                        <button class="btn btn-default btn-outline-green">Upload Profile</button>
+                    </a>
                     <a href="{% url 'customer:delete_customer' customer.id %}">
                         <button class="btn btn-default btn-outline-red">Delete</button>
                     </a>
